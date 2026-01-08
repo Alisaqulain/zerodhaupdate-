@@ -38,7 +38,7 @@ function Stats() {
         {/* Right Image Section */}
         <div className="col-md-6 p-4 text-center">
           <img
-            src="media/images/ecosystem.png"
+            src="/media/images/ecosystem.png"
             alt="ecosystem"
             className="img-fluid"
             style={{ maxWidth: "90%" }}

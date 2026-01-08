@@ -7,7 +7,7 @@ function Awards() {
         {/* Award Image */}
         <div className="col-12 col-md-6 text-center">
           <img
-            src="media/images/largestBroker.svg"
+            src="/media/images/largestBroker.svg"
             alt="Award"
             className="img-fluid"
             style={{ maxWidth: "80%" }}
@@ -43,7 +43,7 @@ function Awards() {
           {/* Press Logos Image */}
           <div className="text-center mt-4">
             <img
-              src="media/images/pressLogos.png"
+              src="/media/images/pressLogos.png"
               alt="Press Logos"
               className="img-fluid"
               style={{ maxWidth: "90%" }}

@@ -7,7 +7,7 @@ function Hero() {
         <div className="col-12">
           {/* Hero Image */}
           <img
-            src="media/images/homeHero.png"
+            src="/media/images/homeHero.png"
             alt="Hero Image"
             className="img-fluid mb-4"
             style={{ maxWidth: "100%", height: "auto" }}

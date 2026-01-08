@@ -7,7 +7,7 @@ function Education() {
         {/* Education Image */}
         <div className="col-12 col-md-6 text-center">
           <img
-            src="media/images/education.svg"
+            src="/media/images/education.svg"
             alt="Education"
             className="img-fluid"
             style={{ maxWidth: "90%" }}

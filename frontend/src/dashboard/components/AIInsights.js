@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Lightbulb, TrendingUp, TrendingDown, AlertCircle } from '@mui/icons-material';
+import { Lightbulb, TrendingUp, TrendingDown, Warning } from '@mui/icons-material';
 import './AIInsights.css';
 
 const AIInsights = ({ holdings, watchlist }) => {
@@ -55,7 +55,7 @@ const AIInsights = ({ holdings, watchlist }) => {
         if (topHoldingPercent > 30) {
           newInsights.push({
             type: 'warning',
-            icon: <AlertCircle />,
+            icon: <Warning />,
             title: 'High Concentration Risk',
             message: `${topHolding.name} represents ${topHoldingPercent}% of your portfolio. Consider reducing exposure.`,
             priority: 'medium'

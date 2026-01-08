@@ -9,6 +9,9 @@ import Orders from "./Orders";
 import Positions from "./Positions";
 import Summary from "./Summary";
 import WatchList from "./WatchList";
+import PortfolioAnalytics from "./PortfolioAnalytics";
+import PriceAlerts from "./PriceAlerts";
+import WatchlistManager from "./WatchlistManager";
 
 import { GeneralContextProvider } from "./GeneralContext";
 
@@ -67,6 +70,9 @@ const Dashboard = () => {
           <Route path="/positions" element={<Positions />} />
           <Route path="/funds" element={<Funds />} />
           <Route path="/apps" element={<Apps />} />
+          <Route path="/analytics" element={<PortfolioAnalytics />} />
+          <Route path="/alerts" element={<PriceAlerts />} />
+          <Route path="/watchlist-manager" element={<WatchlistManager />} />
         </Routes>
       </div>
     </div>

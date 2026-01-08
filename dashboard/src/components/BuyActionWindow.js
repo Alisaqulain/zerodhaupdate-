@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 import GeneralContext from "./GeneralContext";
+import API_BASE_URL from "../config/api";
 
 import "./BuyActionWindow.css";
 
@@ -12,9 +13,7 @@ const BuyActionWindow = ({ uid }) => {
   const [stockPrice, setStockPrice] = useState(0.0);
 
   const handleBuyClick = () => {
-    const BASE_URL = "https://zerodha-clone-backensd.onrender.com"; // Your Render backend URL
-
-    axios.post(`${BASE_URL}/newOrder`, {
+    axios.post(`${API_BASE_URL}/newOrder`, {
       name: uid,
       qty: stockQuantity,
       price: stockPrice,

@@ -1,0 +1,110 @@
+.portfolio-chart-container {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow);
+  animation: fadeIn 0.5s ease-out;
+}
+
+.chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.chart-title {
+  margin: 0 0 10px 0;
+  font-size: 1.1rem;
+  color: var(--text-color);
+  font-weight: 600;
+}
+
+.chart-value {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.value {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+.change {
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.change.positive {
+  color: var(--profit-color);
+  background: rgba(16, 185, 129, 0.1);
+}
+
+.change.negative {
+  color: var(--loss-color);
+  background: rgba(239, 68, 68, 0.1);
+}
+
+.time-range-selector {
+  display: flex;
+  gap: 8px;
+  background: var(--hover-bg);
+  padding: 4px;
+  border-radius: 8px;
+}
+
+.time-btn {
+  padding: 6px 16px;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.time-btn:hover {
+  color: var(--text-color);
+  background: var(--card-bg);
+}
+
+.time-btn.active {
+  background: var(--primary-color);
+  color: white;
+}
+
+.chart-wrapper {
+  height: 300px;
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .chart-header {
+    flex-direction: column;
+  }
+
+  .time-range-selector {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .time-btn {
+    flex: 1;
+  }
+
+  .value {
+    font-size: 1.4rem;
+  }
+}
+
+

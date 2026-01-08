@@ -1,78 +1,48 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom"; // Import Link for navigation
+import React, { useState, useEffect, useContext } from "react";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
 import Menu from "./Menu";
+import ThemeToggle from "./ThemeToggle";
+import RealTimeIndices from "./RealTimeIndices";
+import NotificationSystem from "./Notifications";
+import "./TopBar.css";
 
 const TopBar = () => {
-  // ✅ Detect screen size for responsiveness
+  const { user, logout, isAuthenticated } = useContext(AuthContext);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth <= 768);
     window.addEventListener("resize", handleResize);
-
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // ✅ Container styles
-  const topbarStyle = {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    padding: "15px 20px",
-    backgroundColor: "#f8f9fa",
-    borderBottom: "1px solid #ddd",
-    flexDirection: isMobile ? "column" : "row",
-  };
-
-  // ✅ Index section styles
-  const indicesStyle = {
-    display: "flex",
-    gap: "20px",
-    flexWrap: "wrap",
-    justifyContent: isMobile ? "center" : "flex-start",
-    textAlign: "center",
-  };
-
-  // ✅ Auth buttons styles
-  const authButtonsStyle = {
-    display: "flex",
-    gap: "10px",
-    flexWrap: "wrap",
-    justifyContent: isMobile ? "center" : "flex-end",
-  };
-
-  const buttonStyle = {
-    padding: "8px 16px",
-    textDecoration: "none",
-    borderRadius: "4px",
-    fontSize: "14px",
-    fontWeight: "bold",
-  };
-
   return (
-    <div style={topbarStyle}>
-      {/* Indices Section */}
-      <div style={indicesStyle}>
-        <div>
-          <p className="index">NIFTY 50</p>
-          <p className="index-points">{100.2}</p>
+    <div className="topbar-container">
+      <div className="topbar-content">
+        {/* Real-time Indices */}
+        <div className="indices-section">
+          <RealTimeIndices />
         </div>
-        <div>
-          <p className="index">SENSEX</p>
-          <p className="index-points">{100.2}</p>
+
+        {/* Right Section */}
+        <div className="topbar-right">
+          <NotificationSystem />
+          <ThemeToggle />
+          
+          {isAuthenticated ? (
+            <div className="user-section">
+              <span className="user-name">{user?.name || 'User'}</span>
+              <button onClick={logout} className="logout-btn">Logout</button>
+            </div>
+          ) : (
+            <div className="auth-buttons">
+              <Link to="/login" className="auth-btn login-btn">Login</Link>
+              <Link to="/signup" className="auth-btn signup-btn">Signup</Link>
+            </div>
+          )}
         </div>
       </div>
-
-      {/* Login and Signup Buttons */}
-      <div style={authButtonsStyle}>
-        <Link to="/login" style={{ ...buttonStyle, backgroundColor: "#007bff", color: "white" }}>
-          Login
-        </Link>
-        <Link to="/signup" style={{ ...buttonStyle, backgroundColor: "#28a745", color: "white" }}>
-          Signup
-        </Link>
-      </div>
-
       <Menu />
     </div>
   );

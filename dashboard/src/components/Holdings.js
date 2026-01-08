@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { VerticalGraph } from "./VerticalGraph";
+import API_BASE_URL from "../config/api";
 
 const Holdings = () => {
   const [allHoldings, setAllHoldings] = useState([]);
 
   useEffect(() => {
-    const BASE_URL = "https://zerodha-50bf.onrender.com/"; // Your Render backend URL
-
-    axios.get(`${BASE_URL}/allHoldings`)
+    axios.get(`${API_BASE_URL}/allHoldings`)
       .then((res) => {
         setAllHoldings(res.data);
       })

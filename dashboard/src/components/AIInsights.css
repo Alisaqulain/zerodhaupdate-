@@ -1,0 +1,155 @@
+.ai-insights {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow);
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.insights-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-color);
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.title-icon {
+  color: #fbbf24;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.insights-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.insight-card {
+  display: flex;
+  gap: 15px;
+  padding: 15px;
+  border-radius: 8px;
+  border-left: 4px solid;
+  background: var(--hover-bg);
+  transition: all 0.3s ease;
+  animation: slideInLeft 0.5s ease-out;
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.insight-card:hover {
+  transform: translateX(5px);
+  box-shadow: var(--shadow);
+}
+
+.insight-card.success {
+  border-left-color: var(--success-color);
+}
+
+.insight-card.warning {
+  border-left-color: #f59e0b;
+}
+
+.insight-card.info {
+  border-left-color: var(--primary-color);
+}
+
+.insight-icon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--card-bg);
+}
+
+.insight-card.success .insight-icon {
+  color: var(--success-color);
+  background: rgba(16, 185, 129, 0.1);
+}
+
+.insight-card.warning .insight-icon {
+  color: #f59e0b;
+  background: rgba(245, 158, 11, 0.1);
+}
+
+.insight-card.info .insight-icon {
+  color: var(--primary-color);
+  background: rgba(65, 132, 243, 0.1);
+}
+
+.insight-content {
+  flex: 1;
+}
+
+.insight-title {
+  margin: 0 0 5px 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.insight-message {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.priority-high {
+  border-left-width: 5px;
+}
+
+@media (max-width: 768px) {
+  .ai-insights {
+    padding: 15px;
+  }
+
+  .insight-card {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .insight-icon {
+    width: 35px;
+    height: 35px;
+  }
+}
+
+

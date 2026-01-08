@@ -29,9 +29,11 @@ function NavBar() {
                             <li className="nav-item">
                                 <Link className="nav-link active" to="/Support">Support</Link>
                             </li>
-                            
                             <li className="nav-item">
-                                <a className="nav-link active" href="https://zerodha-2-cdqs.onrender.com/" target="_blank" rel="noopener noreferrer">Dashboard</a>
+                                <Link className="nav-link active" to="/login">Login</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className="nav-link active" to="/signup">Signup</Link>
                             </li>
                         </ul>
                     </form>

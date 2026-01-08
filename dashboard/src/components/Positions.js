@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import API_BASE_URL from "../config/api";
 
 const Positions = () => {
   const [positions, setPositions] = useState([]);
@@ -7,10 +8,8 @@ const Positions = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const BASE_URL = "https://zerodha-50bf.onrender.com/"; // Your Render backend URL
-
     axios
-      .get(`${BASE_URL}/allPositions`) // Adjusted URL to point to the deployed backend
+      .get(`${API_BASE_URL}/allPositions`)
       .then((res) => {
         setPositions(res.data);
         setLoading(false);

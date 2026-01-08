@@ -1,14 +1,21 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import GeneralContext from "./GeneralContext";
 import { Tooltip, Grow } from "@mui/material";
 import { BarChartOutlined, KeyboardArrowDown, KeyboardArrowUp, MoreHoriz } from "@mui/icons-material";
-import { watchlist } from "../data/data";  
+import { watchlist as initialWatchlist } from "../data/data";  
 import { DoughnutChart } from "./DoughnutChart"; 
-
-// ✅ Ensure watchlist is an array before using .map()
-const labels = watchlist?.map((stock) => stock.name) || [];
+import useRealTimePrices from "../hooks/useRealTimePrices";
 
 const WatchList = () => {
+  const [watchlist, setWatchlist] = useState(initialWatchlist);
+  const realTimePrices = useRealTimePrices(watchlist);
+
+  useEffect(() => {
+    setWatchlist(realTimePrices);
+  }, [realTimePrices]);
+
+  const labels = watchlist?.map((stock) => stock.name) || [];
+
   const data = {
     labels,
     datasets: [
@@ -16,22 +23,22 @@ const WatchList = () => {
         label: "Price",
         data: watchlist?.map((stock) => stock.price) || [],
         backgroundColor: [
-          "rgba(255, 99, 132, 0.5)",
-          "rgba(54, 162, 235, 0.5)",
-          "rgba(255, 206, 86, 0.5)",
-          "rgba(75, 192, 192, 0.5)",
-          "rgba(153, 102, 255, 0.5)",
-          "rgba(255, 159, 64, 0.5)",
+          "rgba(65, 132, 243, 0.6)",
+          "rgba(16, 185, 129, 0.6)",
+          "rgba(245, 158, 11, 0.6)",
+          "rgba(139, 92, 246, 0.6)",
+          "rgba(236, 72, 153, 0.6)",
+          "rgba(59, 130, 246, 0.6)",
         ],
         borderColor: [
-          "rgba(255, 99, 132, 1)",
-          "rgba(54, 162, 235, 1)",
-          "rgba(255, 206, 86, 1)",
-          "rgba(75, 192, 192, 1)",
-          "rgba(153, 102, 255, 1)",
-          "rgba(255, 159, 64, 1)",
+          "rgba(65, 132, 243, 1)",
+          "rgba(16, 185, 129, 1)",
+          "rgba(245, 158, 11, 1)",
+          "rgba(139, 92, 246, 1)",
+          "rgba(236, 72, 153, 1)",
+          "rgba(59, 130, 246, 1)",
         ],
-        borderWidth: 1,
+        borderWidth: 2,
       },
     ],
   };
